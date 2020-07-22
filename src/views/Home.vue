@@ -1,17 +1,17 @@
 <template>
     <div class="home-page">
         <div class="home__content">
-            <form @submit.prevent="login()">
+            <form>
                 <h2>Добро пожаловать</h2>
                 <small>Чтобы продолжить введите ваш никнейм и аватар</small>
                 <div>
                     <input v-model="name" type="text" placeholder="Введите ваш никнейм">
                 </div>
                 <div>
-                    <input type="image">
+                    <input type="file">
                 </div>
                 <div>
-                    <button>Создать никнейм</button>
+                    <button @click.prevent="login()" :disabled="name==''" >Создать никнейм</button>
                 </div>
             </form>
         </div>
@@ -28,6 +28,7 @@
         },
         methods: {
             login() {
+                this.$store.dispatch('GET_USER_NAME', this.name)
                 this.$router.push({name: 'Chat', params: {name: 'inbox'}})
             }
         },
@@ -78,6 +79,9 @@
         border-radius: 5px;
         height: 40px;
         border: none;
+    }
+    form button:disabled {
+        cursor: not-allowed;
     }
     
 </style>
