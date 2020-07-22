@@ -46,6 +46,7 @@
     form {
         background: #1F2023;
         width: 640px;
+        max-width: 95%;
         text-align: center;
         color: rgba(248, 248, 248, 0.9);
         padding: 5% 20px;
@@ -82,6 +83,19 @@
     }
     form button:disabled {
         cursor: not-allowed;
+    }
+
+    @media (max-width: 768px) {
+        form {
+            width: 90%;
+            padding: 5% 10px;
+        }
+    }
+    
+    @media (max-width: 579px) {
+        form input, form button {
+            height: 30px;
+        }
     }
     
 </style>

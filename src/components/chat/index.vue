@@ -169,4 +169,16 @@
     .message-list__me .message-block {
         border-radius: 15px 15px 0px 15px;
     }
+    @media (max-width: 579px) {
+        .message__send textarea {
+            height: 40px;
+            padding: 10px;
+        }
+        .message__list, .message__send {
+            padding-left: 0;
+        }
+        .message__send button, .message__send button img {
+            width: 40px;
+        }
+    }
 </style>

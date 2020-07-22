@@ -1,7 +1,7 @@
 <template>
     <div class="chat-page">
         <div class="container flex">
-            <div class="chat__lists">
+            <div class="chat__lists" :class="{inbox: $route.params.name === 'inbox'}">
                 <div class="chat-lists__head">
                     <h3>Чаты</h3>
                     <form @submit.prevent="searching()">
@@ -34,7 +34,7 @@
                         <p>Выберите кому хотите написать</p>
                     </div>
                 </div>
-                <Messages  v-show="$route.params.name !== 'inbox'" />
+                <Messages class="chat-content__messages"  v-show="$route.params.name !== 'inbox'" />
             </div>
         </div>
     </div>
@@ -145,5 +145,29 @@
         align-items: center;
         text-align: center;
         height: 100%;
+    }
+    @media (max-width: 768px) {
+        .chat__lists {
+            width: 0;
+            opacity: 0;
+            padding: 0;
+            visibility: hidden;
+        }
+        .chat__lists.inbox {
+            width: 100%;
+            opacity: 1;
+            border: none;
+            visibility: visible;
+        }
+        .char-content__inbox {
+            width: 0;
+            display: none;
+        }
+        .chat__lists.inbox ~ .chat__content {
+            width: 0;
+        }
+        .chat__content {
+            width: 100%;
+        }
     }
 </style>
